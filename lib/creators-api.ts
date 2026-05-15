@@ -26,6 +26,7 @@ export async function postCreator(payload: CreateCreatorPayload): Promise<Creato
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload),
+    cache: "no-store",
   });
   const data: unknown = await res.json().catch(() => ({}));
   if (!res.ok) {

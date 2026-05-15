@@ -8,6 +8,8 @@ import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
 import type { Metadata } from "next";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "Creadoras | Conecta+",
   description: "Listado de creadoras en la plataforma",
@@ -32,7 +34,7 @@ export default function CreadoresPage() {
           className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#321326] px-4 py-2.5 text-center text-sm font-medium text-[#fef6f0] transition-opacity hover:opacity-90"
         >
           <FontAwesomeIcon icon={faPlus} className="size-4" aria-hidden />
-          Nueva Creador
+          Nuevo Creador
         </Link>
       </div>
       <CreatorsTable creators={storage.creators} />

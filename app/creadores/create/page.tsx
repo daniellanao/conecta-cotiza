@@ -26,7 +26,7 @@ export default function CreateCreadoraPage() {
           className="size-7 shrink-0 opacity-90 sm:size-8"
           aria-hidden
         />
-        Nuevo
+        Nuevo Creador de Contenido
       </h1>
       
     </div>

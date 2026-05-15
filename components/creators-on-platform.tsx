@@ -48,9 +48,7 @@ export function CreatorsOnPlatform({ creators }: CreatorsOnPlatformProps) {
       <h2
         id="creators-on-platform-heading"
         className="mb-3 flex items-center justify-center gap-2 text-center text-base font-semibold tracking-tight opacity-90 sm:mb-4 sm:text-lg"
-      >
-        <FontAwesomeIcon icon={faUsers} className="size-5 shrink-0" aria-hidden />
-        Creadoras en la plataforma
+      >        
       </h2>
       <ul className="flex flex-col gap-4">
         {creators.map((creator) => (

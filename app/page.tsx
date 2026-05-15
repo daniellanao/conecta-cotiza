@@ -3,6 +3,8 @@ import { HomeHeading } from "@/components/home-heading";
 import { storage } from "@/data/storage";
 import { Inter } from "next/font/google";
 
+export const dynamic = "force-dynamic";
+
 const inter = Inter({
   subsets: ["latin", "latin-ext"],
   display: "swap",
