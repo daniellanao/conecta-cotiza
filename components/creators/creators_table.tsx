@@ -3,6 +3,7 @@ import {
   CREATOR_PLATFORM_IDS,
   type CreatorPlatformId,
 } from "@/models/creator";
+import Link from "next/link";
 
 const PLATFORM_SHORT: Record<CreatorPlatformId, string> = {
   instagram: "IG",
@@ -62,13 +63,16 @@ export function CreatorsTable({ creators }: CreatorsTableProps) {
             <th scope="col" className="min-w-[12rem] px-2 py-1.5 font-semibold">
               Redes
             </th>
+            <th scope="col" className="whitespace-nowrap px-2 py-1.5 font-semibold">
+              Detalle
+            </th>
           </tr>
         </thead>
         <tbody>
           {creators.length === 0 ? (
             <tr>
               <td
-                colSpan={7}
+                colSpan={8}
                 className="px-2 py-4 text-center text-sm opacity-70"
               >
                 No hay creadoras registradas.
@@ -106,6 +110,14 @@ export function CreatorsTable({ creators }: CreatorsTableProps) {
                   title={platformsSummary(c)}
                 >
                   {platformsSummary(c)}
+                </td>
+                <td className="whitespace-nowrap px-2 py-1.5 align-middle">
+                  <Link
+                    href={`/creadores/${encodeURIComponent(c.id)}`}
+                    className="inline-flex rounded-lg bg-[#321326]/10 px-2 py-1 text-[0.7rem] font-semibold text-[#321326] transition-colors hover:bg-[#321326]/18"
+                  >
+                    Ver
+                  </Link>
                 </td>
               </tr>
             ))
