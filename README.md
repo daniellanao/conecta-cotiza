@@ -25,6 +25,13 @@ Abre [http://localhost:3000](http://localhost:3000).
 
 - Hay muchas variables para hacer este tipo de cálculo , por ahora se toman en consideracion solo las variables de entrada que se mostraron en las indicaciones del ejercicio: nicho de contenido,  plataformas donde se crea (Instagarm, Tiktok , youtube, x , linkedin), tamaño de audiencia , y tasa de engagement por plataforma, y tiempo activo como UGC (User - Generated Content). 
 
+Followers  
+Engagement rate
+Niche
+
+
+- Variables que no estan en consideracion en el algoritmo y deberian: 
+    - Complejidad del contendio , video editado, tiempo de video , efectos , etc
 
 
 

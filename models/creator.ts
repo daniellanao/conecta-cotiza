@@ -1,20 +1,14 @@
-/** Fixed set of social platforms supported in this demo. */
-export const CREATOR_PLATFORM_IDS = [
-  "instagram",
-  "tiktok",
-  "youtube",
-  "x",
-  "linkedin",
-] as const;
+import type { CreatorPlatformId } from "./platform";
 
-export type CreatorPlatformId = (typeof CREATOR_PLATFORM_IDS)[number];
+export type { CreatorPlatformId, Platform } from "./platform";
+export { CREATOR_PLATFORM_IDS, PLATFORMS } from "./platform";
 
 export interface CreatorPlatformStats {
   followers: number;
   engagementRate: number;
 }
 
-/** Only include keys for platforms the creator uses; omit the rest. */
+/** Solo incluye claves de redes que usa la creadora; omite el resto. */
 export type CreatorPlatforms = Partial<
   Record<CreatorPlatformId, CreatorPlatformStats>
 >;

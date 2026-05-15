@@ -20,6 +20,7 @@ import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import type { CreatorPlatformId } from "@/models/creator";
 import { CREATOR_PLATFORM_IDS } from "@/models/creator";
 import { postCreator, type CreateCreatorPayload } from "@/lib/creators-api";
+import { nichesSeed } from "@/data/niches.seed";
 import { PlatformIcon } from "@/components/creators/platform_icon";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -53,7 +54,7 @@ export function CreatorsCreate() {
   const [age, setAge] = useState("");
   const [country, setCountry] = useState("");
   const [city, setCity] = useState("");
-  const [niche, setNiche] = useState("");
+  const [niche, setNiche] = useState(nichesSeed[0]?.name ?? "");
   const [yearsExperience, setYearsExperience] = useState("");
   const [platforms, setPlatforms] = useState(emptyPlatforms);
   const [submitting, setSubmitting] = useState(false);
@@ -231,13 +232,19 @@ export function CreatorsCreate() {
           <FieldLabel htmlFor="cc-niche" icon={faTag}>
             Nicho
           </FieldLabel>
-          <input
+          <select
             id="cc-niche"
             className={inputClass}
             value={niche}
             onChange={(e) => setNiche(e.target.value)}
             required
-          />
+          >
+            {nichesSeed.map((n) => (
+              <option key={n.id} value={n.name}>
+                {n.name}
+              </option>
+            ))}
+          </select>
         </div>
       </div>
 
