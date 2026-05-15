@@ -3,6 +3,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBars,
+  faCircleQuestion,
   faHouse,
   faRightLeft,
   faUsers,
@@ -20,6 +21,7 @@ const navLinks: readonly {
   { href: "/", label: "Inicio", icon: faHouse },
   { href: "/creadores", label: "Creadores", icon: faUsers },
   { href: "/comparar", label: "Comparar", icon: faRightLeft },
+  { href: "/modelo", label: "Modelo", icon: faCircleQuestion },
 ];
 
 export function Navbar() {

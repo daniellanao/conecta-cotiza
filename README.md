@@ -23,11 +23,19 @@ Abre [http://localhost:3000](http://localhost:3000).
 
 ## Algoritmo del Cálculo 
 
-- Hay muchas variables para hacer este tipo de cálculo , por ahora se toman en consideracion solo las variables de entrada que se mostraron en las indicaciones del ejercicio: nicho de contenido,  plataformas donde se crea (Instagarm, Tiktok , youtube, x , linkedin), tamaño de audiencia , y tasa de engagement por plataforma, y tiempo activo como UGC (User - Generated Content). 
+- Hay muchas variables para hacer este tipo de cálculo , por ahora se toman en consideracion solo las variables de entrada que se mostraron en las indicaciones del ejercicio: 
+    - Nicho de contenido,  
+    - Plataformas donde se crea (Instagarm, Tiktok , youtube, x , linkedin)
+    - Tamaño de audiencia y tasa de engagement por plataforma, 
+    - Tiempo activo como UGC (User - Generated Content). 
 
-Followers  
-Engagement rate
-Niche
+- Entonces Seria:
+    - Multiplicador de Usuario
+    | País | Años de Experiencia | Nicho | Redes |
+
+    - Multiplicador de Redes, se multiplican por cada plataforma
+    |Red | Seguidores | Tasa de Engagement | Multiplicador de Red |
+    |Instagram | 100K | 7% | 0.0003 |
 
 
 - Variables que no estan en consideracion en el algoritmo y deberian: 
