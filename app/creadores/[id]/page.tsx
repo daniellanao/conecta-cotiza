@@ -1,3 +1,4 @@
+import { CreatorContentPrices } from "@/components/creators/creator_content_prices";
 import { CreatorDetail } from "@/components/creators/creator_detail";
 import { storage } from "@/data/storage";
 import type { Metadata } from "next";
@@ -38,6 +39,7 @@ export default async function CreadorDetailPage({ params }: Props) {
         </Link>
       </div>
       <CreatorDetail creator={creator} />
+      <CreatorContentPrices creator={creator} />
     </>
   );
 }
