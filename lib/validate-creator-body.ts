@@ -34,9 +34,9 @@ export function parseCreatorFromBody(body: unknown):
   if (
     !isFiniteNumber(o.yearsExperience) ||
     o.yearsExperience < 0 ||
-    o.yearsExperience > 80
+    o.yearsExperience > 10
   ) {
-    return { ok: false, error: "Años de experiencia inválidos" };
+    return { ok: false, error: "Años de experiencia inválidos (0–10)" };
   }
 
   const platformsInput = o.platforms;

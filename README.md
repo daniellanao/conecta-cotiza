@@ -32,6 +32,7 @@ Niche
 
 - Variables que no estan en consideracion en el algoritmo y deberian: 
     - Complejidad del contendio , video editado, tiempo de video , efectos , etc
+    - Ciudad, para hacerlo simple se considera pais, pero es una variable la ciudad, incluso distrito. 
 
 
 

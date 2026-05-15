@@ -20,6 +20,8 @@ import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import type { CreatorPlatformId } from "@/models/creator";
 import { CREATOR_PLATFORM_IDS } from "@/models/creator";
 import { postCreator, type CreateCreatorPayload } from "@/lib/creators-api";
+import { countriesSeed } from "@/data/countries.seed";
+import { experienceYearsSeed } from "@/data/experience-years.seed";
 import { nichesSeed } from "@/data/niches.seed";
 import { PlatformIcon } from "@/components/creators/platform_icon";
 import Link from "next/link";
@@ -52,10 +54,12 @@ export function CreatorsCreate() {
   const router = useRouter();
   const [name, setName] = useState("");
   const [age, setAge] = useState("");
-  const [country, setCountry] = useState("");
+  const [country, setCountry] = useState(countriesSeed[0]?.name ?? "");
   const [city, setCity] = useState("");
   const [niche, setNiche] = useState(nichesSeed[0]?.name ?? "");
-  const [yearsExperience, setYearsExperience] = useState("");
+  const [yearsExperience, setYearsExperience] = useState(
+    String(experienceYearsSeed[0]?.years ?? 0),
+  );
   const [platforms, setPlatforms] = useState(emptyPlatforms);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -193,28 +197,41 @@ export function CreatorsCreate() {
           <FieldLabel htmlFor="cc-years" icon={faBriefcase}>
             Años de experiencia
           </FieldLabel>
-          <input
+          <select
             id="cc-years"
-            type="number"
-            min={0}
-            max={80}
             className={inputClass}
             value={yearsExperience}
             onChange={(e) => setYearsExperience(e.target.value)}
             required
-          />
+          >
+            {experienceYearsSeed.map((row) => (
+              <option key={row.years} value={String(row.years)}>
+                {row.years === 0
+                  ? "0 años"
+                  : row.years === 1
+                    ? "1 año"
+                    : `${row.years} años`}
+              </option>
+            ))}
+          </select>
         </div>
         <div>
           <FieldLabel htmlFor="cc-country" icon={faGlobe}>
             País
           </FieldLabel>
-          <input
+          <select
             id="cc-country"
             className={inputClass}
             value={country}
             onChange={(e) => setCountry(e.target.value)}
             required
-          />
+          >
+            {countriesSeed.map((c) => (
+              <option key={c.id} value={c.name}>
+                {c.name}
+              </option>
+            ))}
+          </select>
         </div>
         <div>
           <FieldLabel htmlFor="cc-city" icon={faLocationDot}>
