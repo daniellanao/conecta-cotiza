@@ -7,7 +7,7 @@ export type CreateCreatorPayload = Omit<Creator, "id"> & { id?: string };
 export async function fetchCreators(): Promise<Creator[]> {
   const res = await fetch(API, { cache: "no-store" });
   if (!res.ok) {
-    throw new Error(`No se pudieron obtener las creadoras (${res.status})`);
+    throw new Error(`No se pudieron obtener los creadores de contenido (${res.status})`);
   }
   const data: unknown = await res.json();
   if (

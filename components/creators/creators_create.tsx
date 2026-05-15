@@ -359,7 +359,7 @@ export function CreatorsCreate() {
           ) : (
             <>
               <FontAwesomeIcon icon={faFloppyDisk} className="size-4" aria-hidden />
-              Crear creadora
+              Crear
             </>
           )}
         </button>
