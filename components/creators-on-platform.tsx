@@ -1,8 +1,13 @@
+"use client";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUsers } from "@fortawesome/free-solid-svg-icons";
 import {
   CREATOR_PLATFORM_IDS,
   type Creator,
   type CreatorPlatformId,
 } from "@/models/creator";
+import { PlatformIcon } from "@/components/creators/platform_icon";
 
 const PLATFORM_LABELS: Record<CreatorPlatformId, string> = {
   instagram: "Instagram",
@@ -42,8 +47,9 @@ export function CreatorsOnPlatform({ creators }: CreatorsOnPlatformProps) {
     >
       <h2
         id="creators-on-platform-heading"
-        className="mb-3 text-center text-base font-semibold tracking-tight opacity-90 sm:mb-4 sm:text-lg"
+        className="mb-3 flex items-center justify-center gap-2 text-center text-base font-semibold tracking-tight opacity-90 sm:mb-4 sm:text-lg"
       >
+        <FontAwesomeIcon icon={faUsers} className="size-5 shrink-0" aria-hidden />
         Creadoras en la plataforma
       </h2>
       <ul className="flex flex-col gap-4">
@@ -65,13 +71,19 @@ export function CreatorsOnPlatform({ creators }: CreatorsOnPlatformProps) {
                 {platformsWithStats(creator).map((p) => (
                   <li
                     key={`${creator.id}-${p.id}`}
-                    className="min-w-0 rounded-xl bg-[#321326]/08 px-3 py-2 text-xs leading-relaxed break-words sm:text-sm"
+                    className="flex min-w-0 items-start gap-2 rounded-xl bg-[#321326]/08 px-3 py-2 text-xs leading-relaxed break-words sm:items-center sm:text-sm"
                   >
-                    <span className="font-medium">{p.label}</span>
-                    <span className="mx-1.5 opacity-50">·</span>
-                    <span>{formatFollowers(p.followers)} seguidores</span>
-                    <span className="mx-1.5 opacity-50">·</span>
-                    <span>{p.engagementRate}% engagement</span>
+                    <PlatformIcon
+                      id={p.id}
+                      className="mt-0.5 size-4 shrink-0 sm:mt-0"
+                    />
+                    <span>
+                      <span className="font-medium">{p.label}</span>
+                      <span className="mx-1.5 opacity-50">·</span>
+                      <span>{formatFollowers(p.followers)} seguidores</span>
+                      <span className="mx-1.5 opacity-50">·</span>
+                      <span>{p.engagementRate}% engagement</span>
+                    </span>
                   </li>
                 ))}
               </ul>

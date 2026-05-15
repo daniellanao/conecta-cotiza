@@ -1,37 +1,26 @@
 "use client";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faBars,
+  faHouse,
+  faRightLeft,
+  faUsers,
+  faXmark,
+} from "@fortawesome/free-solid-svg-icons";
+import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-const navLinks = [
-  { href: "/", label: "Inicio" },
-  { href: "/creadores", label: "Creadores" },
-  { href: "/comparar", label: "Comparar" },
-] as const;
-
-function MenuIcon({ open }: { open: boolean }) {
-  return (
-    <svg
-      className="h-6 w-6"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={2}
-      strokeLinecap="round"
-      aria-hidden
-      viewBox="0 0 24 24"
-    >
-      {open ? (
-        <>
-          <path d="M6 18L18 6M6 6l12 12" />
-        </>
-      ) : (
-        <>
-          <path d="M4 6h16M4 12h16M4 18h16" />
-        </>
-      )}
-    </svg>
-  );
-}
+const navLinks: readonly {
+  href: string;
+  label: string;
+  icon: IconDefinition;
+}[] = [
+  { href: "/", label: "Inicio", icon: faHouse },
+  { href: "/creadores", label: "Creadores", icon: faUsers },
+  { href: "/comparar", label: "Comparar", icon: faRightLeft },
+];
 
 export function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -72,12 +61,13 @@ export function Navbar() {
         </Link>
 
         <ul className="hidden items-center gap-1 md:flex md:gap-2">
-          {navLinks.map(({ href, label }) => (
+          {navLinks.map(({ href, label, icon }) => (
             <li key={href}>
               <Link
                 href={href}
-                className="rounded-lg px-3 py-2 text-sm font-medium transition-colors hover:bg-[#321326]/10"
+                className="inline-flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium transition-colors hover:bg-[#321326]/10"
               >
+                <FontAwesomeIcon icon={icon} className="size-3.5 opacity-80" aria-hidden />
                 {label}
               </Link>
             </li>
@@ -92,7 +82,11 @@ export function Navbar() {
           aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
           onClick={() => setMenuOpen((o) => !o)}
         >
-          <MenuIcon open={menuOpen} />
+          <FontAwesomeIcon
+            icon={menuOpen ? faXmark : faBars}
+            className="size-6"
+            aria-hidden
+          />
         </button>
       </nav>
 
@@ -103,13 +97,14 @@ export function Navbar() {
         }`}
       >
         <ul className="flex flex-col px-3 py-2 sm:px-6">
-          {navLinks.map(({ href, label }) => (
+          {navLinks.map(({ href, label, icon }) => (
             <li key={href}>
               <Link
                 href={href}
-                className="block rounded-lg px-3 py-3 text-base font-medium transition-colors hover:bg-[#321326]/10 active:bg-[#321326]/15"
+                className="flex items-center gap-3 rounded-lg px-3 py-3 text-base font-medium transition-colors hover:bg-[#321326]/10 active:bg-[#321326]/15"
                 onClick={() => setMenuOpen(false)}
               >
+                <FontAwesomeIcon icon={icon} className="size-4 w-5 opacity-80" aria-hidden />
                 {label}
               </Link>
             </li>

@@ -1,4 +1,5 @@
 import { CreatorsOnPlatform } from "@/components/creators-on-platform";
+import { HomeHeading } from "@/components/home-heading";
 import { storage } from "@/data/storage";
 import { Inter } from "next/font/google";
 
@@ -16,14 +17,7 @@ export default function Home() {
         color: "#321326",
       }}
     >
-      <header className="flex w-full max-w-3xl flex-col items-center px-1 text-center">
-        <h1 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
-          Conecta+
-        </h1>
-        <p className="mt-2 max-w-3xl text-xl leading-snug sm:text-2xl md:text-3xl">
-          ¿Cuánto debería cobrar ?
-        </p>
-      </header>
+      <HomeHeading />
 
       <CreatorsOnPlatform creators={storage.creators} />
     </div>
