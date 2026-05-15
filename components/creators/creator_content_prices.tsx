@@ -3,24 +3,13 @@ import { faEuroSign } from "@fortawesome/free-solid-svg-icons";
 import { contentsSeed } from "@/data/contents.seed";
 import type { Creator } from "@/models/creator";
 import { calculatePriceForCreator } from "@/services/calculate_price.service";
+import { price_range_from_center } from "@/lib/creator_price_range";
 
 function format_amount_es(amount: number): string {
   return new Intl.NumberFormat("es-419", {
     minimumFractionDigits: 0,
     maximumFractionDigits: 0,
   }).format(amount);
-}
-
-/** Techo al siguiente múltiplo de 10 (alineado con `calculate_price.service`). */
-function round_up_to_ten(value: number): number {
-  return Math.ceil(value / 10) * 10;
-}
-
-/** Rango ±10 % sobre el precio base, cada extremo con techo a múltiplo de 10. */
-function price_range(center: number): { low: number; high: number } {
-  const low = round_up_to_ten(center * 0.9);
-  const high = round_up_to_ten(center * 1.1);
-  return low <= high ? { low, high } : { low: high, high: low };
 }
 
 function EurCell({ amount }: { amount: number }) {
@@ -82,7 +71,7 @@ export function CreatorContentPrices({ creator }: CreatorContentPricesProps) {
           <tbody>
             {contentsSeed.map((content) => {
               const center = calculatePriceForCreator(creator, content.id);
-              const { low, high } = price_range(center);
+              const { low, high } = price_range_from_center(center);
               return (
                 <tr
                   key={content.id}
